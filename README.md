@@ -78,6 +78,10 @@ Once you've got it working, just upload it to IronWorker.
 
 Run `iron_worker upload consumer` to get your code onto the IronWorker system.
 
+## Schedule worker to run
+
+Run `iron_worker schedule
+
 ## Now queue up messages from wherever.
 
 ```ruby

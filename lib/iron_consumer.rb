@@ -29,10 +29,22 @@ module IronConsumer
 
     # qname defined by user too
     queue = mq.queue(qname)
-    p mq.project_id
 
     # This worker kicks off whenever a message gets on a queue (only once, needs alerts)
-    while msg = queue.get
+    tries = 0
+    max_tries = 3
+    sleep_time = 3
+    while true
+      msg = queue.get
+      if msg == nil
+        # sleep for a short time to see if we can get another one
+        tries += 1
+        if tries >= max_tries
+          break
+        end
+        sleep sleep_time
+        next
+      end
       IronConsumer.set_message(msg)
       begin
 

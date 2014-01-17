@@ -17,6 +17,7 @@ Gem::Specification.new do |gem|
   gem.required_rubygems_version = ">= 1.3.6"
   gem.required_ruby_version = Gem::Requirement.new(">= 1.9")
   gem.add_runtime_dependency "iron_mq", ">= 4.0.0"
+  gem.add_runtime_dependency "iron_worker_ng"
 
   gem.add_development_dependency "test-unit"
   gem.add_development_dependency "minitest"
