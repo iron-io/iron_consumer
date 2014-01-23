@@ -1,4 +1,11 @@
-This is a gem to help make it easier to make a worker that runs for a while and pulls off IronMQ for processing. This is particularly good for short quick jobs like sending notifications and what not, things that take a few secondsor less. 
+This is a gem to help make it easier to make a worker that runs for a while and pulls off IronMQ for processing. This is particularly good for short quick jobs like sending notifications and what not, things that take a few seconds or less. 
+
+The framework basically has two files you put your code in:
+
+1. usersetup.rb - this is where you setup database connections and other client libs to connect to other services.
+2. usercode.rb - this is where the actually work goes and you can use your connections from usersetup.rb in here.
+
+Then you just upload your worker as usual, set a schedule or alert pattern and you're done. 
 
 Benefits:
 
