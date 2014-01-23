@@ -1,9 +1,9 @@
-This is a special way to make a worker that runs for a while and pulls off IronMQ.
+This is a gem to help make it easier to make a worker that runs for a while and pulls off IronMQ for processing. This is particularly good for short quick jobs like sending notifications and what not, things that take a few secondsor less. 
 
 Benefits:
 
-- no load times so faster and cheaper
-- can run locally and remote in the same way
+- Only loads once so jobs can process faster and cheaper
+- Can run locally and remote in the same way
 - HUD could have easy editor (usersetup and usercode text boxes)
 
 Can use with scheduler or alerts.
