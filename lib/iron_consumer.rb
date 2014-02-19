@@ -6,8 +6,8 @@ require_relative 'helpers'
 
 module IronConsumer
 
-  def self.run(queue_name)
-    qname = queue_name
+  def self.run(config)
+    qname = config['workqueue']
 
     # User can have whatever he wants in the usersetup part.
     # We can put the helpers stuff in a gem that user can optionally use or something.
@@ -25,7 +25,7 @@ module IronConsumer
     # Other connections would be made here
 
     # Iron stuff is setup too:
-    mq = IronMQ::Client.new()
+    mq = IronMQ::Client.new(config['iron'])
 
     # qname defined by user too
     queue = mq.queue(qname)

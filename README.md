@@ -76,7 +76,7 @@ Just create a simple file called `local.rb` and put this in it:
 
 ```ruby
 require 'iron_consumer'
-IronConsumer.run('my_queue')
+IronConsumer.run(workqueue: 'my_queue')
 ```
 
 Once you've got it working, just upload it to IronWorker.
