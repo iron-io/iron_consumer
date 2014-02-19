@@ -12,14 +12,17 @@ module IronConsumer
     # User can have whatever he wants in the usersetup part.
     # We can put the helpers stuff in a gem that user can optionally use or something.
 
+    setupfile = config['setup'] || "usersetup.rb"
     begin
-      load "usersetup.rb"
+      load setupfile
     rescue LoadError => ex
       p ex
       puts ex.message
-      puts "You need a file called usersetup.rb."
+      puts "You need a file called #{setupfile}"
       exit false
     end
+
+    codefile = config['code'] || "usercode.rb"
 
     # mongo1 name is defined by user
     # Other connections would be made here
@@ -40,6 +43,7 @@ module IronConsumer
         # sleep for a short time to see if we can get another one
         tries += 1
         if tries >= max_tries
+          puts "No more messages to process, shutting down."
           break
         end
         sleep sleep_time
@@ -50,10 +54,10 @@ module IronConsumer
 
         # USER CODE STUFFED IN HERE
         begin
-          load "usercode.rb"
+          load codefile
         rescue LoadError => ex
           p ex
-          puts "You need a file called usercode.rb."
+          puts "You need a file called #{codefile}."
           exit false
         end
         # USER CODE END
